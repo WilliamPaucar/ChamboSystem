@@ -1,0 +1,10 @@
+﻿Sorry, there was a problem downloading some files from OneDrive. Please try again.
+
+db.lock - https://onedrive.live.com/?cid=6cd47b8bc67e32b0&id=6CD47B8BC67E32B0%2114583&action=Download
+
+Models.DatosBD.Modelo1.Context.cs.dll - https://onedrive.live.com/?cid=6cd47b8bc67e32b0&id=6CD47B8BC67E32B0%2114379&action=Download
+
+Sistema Puntuacion Chambo.csproj.CopyComplete - https://onedrive.live.com/?cid=6cd47b8bc67e32b0&id=6CD47B8BC67E32B0%2114000&action=Download
+
+
+

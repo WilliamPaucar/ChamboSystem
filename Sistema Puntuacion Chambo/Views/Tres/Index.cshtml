@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Sistema_Puntuacion_Chambo.Models.DatosBD.tbl_presentacion_cuatro>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<table class="table table-bordered">
+    <tr class="success">
+        <th>
+            <h3>Backup calificaciones de Participantes Presentacion 3</h3>
+        </th>
+        <th></th>
+        <th></th>
+        <th style="padding-top:25px">
+            @Html.ActionLink("Calificar Participante", "Create", null, new { @class = "btn btn-success" })
+        </th>
+    </tr>
+</table>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nota1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nota2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nota3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nota4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_candidatas.nombres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_users_jueces.nombres_completos)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nota1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nota2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nota3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nota4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tbl_candidatas.nombres)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tbl_users_jueces.nombres_completos)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.id }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>

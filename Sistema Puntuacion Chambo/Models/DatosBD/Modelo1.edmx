@@ -1,0 +1,537 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ChamboModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_candidatas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombres" Type="varchar" MaxLength="30" />
+          <Property Name="apellidos" Type="varchar" MaxLength="30" />
+          <Property Name="imagen" Type="varbinary(max)" />
+          <Property Name="respresentacion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_presentacion_cuatro">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_candidatas_id" Type="int" Nullable="false" />
+          <Property Name="fk_users_id" Type="int" Nullable="false" />
+          <Property Name="nota1" Type="tinyint" />
+          <Property Name="nota2" Type="tinyint" />
+          <Property Name="nota3" Type="tinyint" />
+          <Property Name="nota4" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="tbl_presentacion_dos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_candidatas_id" Type="int" Nullable="false" />
+          <Property Name="fk_users_id" Type="int" Nullable="false" />
+          <Property Name="nota1" Type="tinyint" />
+          <Property Name="nota2" Type="tinyint" />
+          <Property Name="nota3" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="tbl_presentacion_tres">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_candidatas_id" Type="int" Nullable="false" />
+          <Property Name="fk_users_id" Type="int" Nullable="false" />
+          <Property Name="nota1" Type="tinyint" />
+          <Property Name="nota2" Type="tinyint" />
+          <Property Name="nota3" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="tbl_presentacion_uno">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_candidatas_id" Type="int" />
+          <Property Name="fk_users_id" Type="int" />
+          <Property Name="nota1" Type="tinyint" />
+          <Property Name="nota2" Type="tinyint" />
+          <Property Name="nota3" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="tbl_users_jueces">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombres_completos" Type="varchar" MaxLength="50" />
+          <Property Name="username" Type="varchar" MaxLength="20" />
+          <Property Name="password" Type="varchar" MaxLength="20" />
+          <Property Name="tipo" Type="nchar" MaxLength="1" />
+        </EntityType>
+        <Association Name="FK_tbl_presentacion_cuatro_tbl_candidatas">
+          <End Role="tbl_candidatas" Type="Self.tbl_candidatas" Multiplicity="1" />
+          <End Role="tbl_presentacion_cuatro" Type="Self.tbl_presentacion_cuatro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_candidatas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_presentacion_cuatro">
+              <PropertyRef Name="fk_candidatas_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_presentacion_cuatro_tbl_users_jueces">
+          <End Role="tbl_users_jueces" Type="Self.tbl_users_jueces" Multiplicity="1" />
+          <End Role="tbl_presentacion_cuatro" Type="Self.tbl_presentacion_cuatro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_users_jueces">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_presentacion_cuatro">
+              <PropertyRef Name="fk_users_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_presentacion_dos_tbl_candidatas">
+          <End Role="tbl_candidatas" Type="Self.tbl_candidatas" Multiplicity="1" />
+          <End Role="tbl_presentacion_dos" Type="Self.tbl_presentacion_dos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_candidatas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_presentacion_dos">
+              <PropertyRef Name="fk_candidatas_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_presentacion_dos_tbl_users_jueces">
+          <End Role="tbl_users_jueces" Type="Self.tbl_users_jueces" Multiplicity="1" />
+          <End Role="tbl_presentacion_dos" Type="Self.tbl_presentacion_dos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_users_jueces">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_presentacion_dos">
+              <PropertyRef Name="fk_users_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_presentacion_tres_tbl_candidatas">
+          <End Role="tbl_candidatas" Type="Self.tbl_candidatas" Multiplicity="1" />
+          <End Role="tbl_presentacion_tres" Type="Self.tbl_presentacion_tres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_candidatas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_presentacion_tres">
+              <PropertyRef Name="fk_candidatas_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_presentacion_tres_tbl_users_jueces">
+          <End Role="tbl_users_jueces" Type="Self.tbl_users_jueces" Multiplicity="1" />
+          <End Role="tbl_presentacion_tres" Type="Self.tbl_presentacion_tres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_users_jueces">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_presentacion_tres">
+              <PropertyRef Name="fk_users_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_presentacion_uno_tbl_candidatas">
+          <End Role="tbl_candidatas" Type="Self.tbl_candidatas" Multiplicity="0..1" />
+          <End Role="tbl_presentacion_uno" Type="Self.tbl_presentacion_uno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_candidatas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_presentacion_uno">
+              <PropertyRef Name="fk_candidatas_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_presentacion_uno_tbl_users_jueces">
+          <End Role="tbl_users_jueces" Type="Self.tbl_users_jueces" Multiplicity="0..1" />
+          <End Role="tbl_presentacion_uno" Type="Self.tbl_presentacion_uno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_users_jueces">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_presentacion_uno">
+              <PropertyRef Name="fk_users_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="PromediarNotas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="usuario" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="ChamboModelStoreContainer">
+          <EntitySet Name="tbl_candidatas" EntityType="Self.tbl_candidatas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_presentacion_cuatro" EntityType="Self.tbl_presentacion_cuatro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_presentacion_dos" EntityType="Self.tbl_presentacion_dos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_presentacion_tres" EntityType="Self.tbl_presentacion_tres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_presentacion_uno" EntityType="Self.tbl_presentacion_uno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_users_jueces" EntityType="Self.tbl_users_jueces" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbl_presentacion_cuatro_tbl_candidatas" Association="Self.FK_tbl_presentacion_cuatro_tbl_candidatas">
+            <End Role="tbl_candidatas" EntitySet="tbl_candidatas" />
+            <End Role="tbl_presentacion_cuatro" EntitySet="tbl_presentacion_cuatro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_presentacion_cuatro_tbl_users_jueces" Association="Self.FK_tbl_presentacion_cuatro_tbl_users_jueces">
+            <End Role="tbl_users_jueces" EntitySet="tbl_users_jueces" />
+            <End Role="tbl_presentacion_cuatro" EntitySet="tbl_presentacion_cuatro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_presentacion_dos_tbl_candidatas" Association="Self.FK_tbl_presentacion_dos_tbl_candidatas">
+            <End Role="tbl_candidatas" EntitySet="tbl_candidatas" />
+            <End Role="tbl_presentacion_dos" EntitySet="tbl_presentacion_dos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_presentacion_dos_tbl_users_jueces" Association="Self.FK_tbl_presentacion_dos_tbl_users_jueces">
+            <End Role="tbl_users_jueces" EntitySet="tbl_users_jueces" />
+            <End Role="tbl_presentacion_dos" EntitySet="tbl_presentacion_dos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_presentacion_tres_tbl_candidatas" Association="Self.FK_tbl_presentacion_tres_tbl_candidatas">
+            <End Role="tbl_candidatas" EntitySet="tbl_candidatas" />
+            <End Role="tbl_presentacion_tres" EntitySet="tbl_presentacion_tres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_presentacion_tres_tbl_users_jueces" Association="Self.FK_tbl_presentacion_tres_tbl_users_jueces">
+            <End Role="tbl_users_jueces" EntitySet="tbl_users_jueces" />
+            <End Role="tbl_presentacion_tres" EntitySet="tbl_presentacion_tres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_presentacion_uno_tbl_candidatas" Association="Self.FK_tbl_presentacion_uno_tbl_candidatas">
+            <End Role="tbl_candidatas" EntitySet="tbl_candidatas" />
+            <End Role="tbl_presentacion_uno" EntitySet="tbl_presentacion_uno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_presentacion_uno_tbl_users_jueces" Association="Self.FK_tbl_presentacion_uno_tbl_users_jueces">
+            <End Role="tbl_users_jueces" EntitySet="tbl_users_jueces" />
+            <End Role="tbl_presentacion_uno" EntitySet="tbl_presentacion_uno" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ChamboModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_candidatas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombres" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="apellidos" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="respresentacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_presentacion_cuatro" Relationship="Self.FK_tbl_presentacion_cuatro_tbl_candidatas" FromRole="tbl_candidatas" ToRole="tbl_presentacion_cuatro" />
+          <NavigationProperty Name="tbl_presentacion_dos" Relationship="Self.FK_tbl_presentacion_dos_tbl_candidatas" FromRole="tbl_candidatas" ToRole="tbl_presentacion_dos" />
+          <NavigationProperty Name="tbl_presentacion_tres" Relationship="Self.FK_tbl_presentacion_tres_tbl_candidatas" FromRole="tbl_candidatas" ToRole="tbl_presentacion_tres" />
+          <NavigationProperty Name="tbl_presentacion_uno" Relationship="Self.FK_tbl_presentacion_uno_tbl_candidatas" FromRole="tbl_candidatas" ToRole="tbl_presentacion_uno" />
+        </EntityType>
+        <EntityType Name="tbl_presentacion_cuatro">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_candidatas_id" Type="Int32" Nullable="false" />
+          <Property Name="fk_users_id" Type="Int32" Nullable="false" />
+          <Property Name="nota1" Type="Byte" />
+          <Property Name="nota2" Type="Byte" />
+          <Property Name="nota3" Type="Byte" />
+          <Property Name="nota4" Type="Byte" />
+          <NavigationProperty Name="tbl_candidatas" Relationship="Self.FK_tbl_presentacion_cuatro_tbl_candidatas" FromRole="tbl_presentacion_cuatro" ToRole="tbl_candidatas" />
+          <NavigationProperty Name="tbl_users_jueces" Relationship="Self.FK_tbl_presentacion_cuatro_tbl_users_jueces" FromRole="tbl_presentacion_cuatro" ToRole="tbl_users_jueces" />
+        </EntityType>
+        <EntityType Name="tbl_presentacion_dos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_candidatas_id" Type="Int32" Nullable="false" />
+          <Property Name="fk_users_id" Type="Int32" Nullable="false" />
+          <Property Name="nota1" Type="Byte" />
+          <Property Name="nota2" Type="Byte" />
+          <Property Name="nota3" Type="Byte" />
+          <NavigationProperty Name="tbl_candidatas" Relationship="Self.FK_tbl_presentacion_dos_tbl_candidatas" FromRole="tbl_presentacion_dos" ToRole="tbl_candidatas" />
+          <NavigationProperty Name="tbl_users_jueces" Relationship="Self.FK_tbl_presentacion_dos_tbl_users_jueces" FromRole="tbl_presentacion_dos" ToRole="tbl_users_jueces" />
+        </EntityType>
+        <EntityType Name="tbl_presentacion_tres">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_candidatas_id" Type="Int32" Nullable="false" />
+          <Property Name="fk_users_id" Type="Int32" Nullable="false" />
+          <Property Name="nota1" Type="Byte" />
+          <Property Name="nota2" Type="Byte" />
+          <Property Name="nota3" Type="Byte" />
+          <NavigationProperty Name="tbl_candidatas" Relationship="Self.FK_tbl_presentacion_tres_tbl_candidatas" FromRole="tbl_presentacion_tres" ToRole="tbl_candidatas" />
+          <NavigationProperty Name="tbl_users_jueces" Relationship="Self.FK_tbl_presentacion_tres_tbl_users_jueces" FromRole="tbl_presentacion_tres" ToRole="tbl_users_jueces" />
+        </EntityType>
+        <EntityType Name="tbl_presentacion_uno">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_candidatas_id" Type="Int32" />
+          <Property Name="fk_users_id" Type="Int32" />
+          <Property Name="nota1" Type="Byte" />
+          <Property Name="nota2" Type="Byte" />
+          <Property Name="nota3" Type="Byte" />
+          <NavigationProperty Name="tbl_candidatas" Relationship="Self.FK_tbl_presentacion_uno_tbl_candidatas" FromRole="tbl_presentacion_uno" ToRole="tbl_candidatas" />
+          <NavigationProperty Name="tbl_users_jueces" Relationship="Self.FK_tbl_presentacion_uno_tbl_users_jueces" FromRole="tbl_presentacion_uno" ToRole="tbl_users_jueces" />
+        </EntityType>
+        <EntityType Name="tbl_users_jueces">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombres_completos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="tipo" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="tbl_presentacion_cuatro" Relationship="Self.FK_tbl_presentacion_cuatro_tbl_users_jueces" FromRole="tbl_users_jueces" ToRole="tbl_presentacion_cuatro" />
+          <NavigationProperty Name="tbl_presentacion_dos" Relationship="Self.FK_tbl_presentacion_dos_tbl_users_jueces" FromRole="tbl_users_jueces" ToRole="tbl_presentacion_dos" />
+          <NavigationProperty Name="tbl_presentacion_tres" Relationship="Self.FK_tbl_presentacion_tres_tbl_users_jueces" FromRole="tbl_users_jueces" ToRole="tbl_presentacion_tres" />
+          <NavigationProperty Name="tbl_presentacion_uno" Relationship="Self.FK_tbl_presentacion_uno_tbl_users_jueces" FromRole="tbl_users_jueces" ToRole="tbl_presentacion_uno" />
+        </EntityType>
+        <Association Name="FK_tbl_presentacion_cuatro_tbl_candidatas">
+          <End Role="tbl_candidatas" Type="Self.tbl_candidatas" Multiplicity="1" />
+          <End Role="tbl_presentacion_cuatro" Type="Self.tbl_presentacion_cuatro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_candidatas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_presentacion_cuatro">
+              <PropertyRef Name="fk_candidatas_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_presentacion_dos_tbl_candidatas">
+          <End Role="tbl_candidatas" Type="Self.tbl_candidatas" Multiplicity="1" />
+          <End Role="tbl_presentacion_dos" Type="Self.tbl_presentacion_dos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_candidatas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_presentacion_dos">
+              <PropertyRef Name="fk_candidatas_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_presentacion_tres_tbl_candidatas">
+          <End Role="tbl_candidatas" Type="Self.tbl_candidatas" Multiplicity="1" />
+          <End Role="tbl_presentacion_tres" Type="Self.tbl_presentacion_tres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_candidatas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_presentacion_tres">
+              <PropertyRef Name="fk_candidatas_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_presentacion_uno_tbl_candidatas">
+          <End Role="tbl_candidatas" Type="Self.tbl_candidatas" Multiplicity="0..1" />
+          <End Role="tbl_presentacion_uno" Type="Self.tbl_presentacion_uno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_candidatas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_presentacion_uno">
+              <PropertyRef Name="fk_candidatas_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_presentacion_cuatro_tbl_users_jueces">
+          <End Role="tbl_users_jueces" Type="Self.tbl_users_jueces" Multiplicity="1" />
+          <End Role="tbl_presentacion_cuatro" Type="Self.tbl_presentacion_cuatro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_users_jueces">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_presentacion_cuatro">
+              <PropertyRef Name="fk_users_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_presentacion_dos_tbl_users_jueces">
+          <End Role="tbl_users_jueces" Type="Self.tbl_users_jueces" Multiplicity="1" />
+          <End Role="tbl_presentacion_dos" Type="Self.tbl_presentacion_dos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_users_jueces">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_presentacion_dos">
+              <PropertyRef Name="fk_users_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_presentacion_tres_tbl_users_jueces">
+          <End Role="tbl_users_jueces" Type="Self.tbl_users_jueces" Multiplicity="1" />
+          <End Role="tbl_presentacion_tres" Type="Self.tbl_presentacion_tres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_users_jueces">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_presentacion_tres">
+              <PropertyRef Name="fk_users_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_presentacion_uno_tbl_users_jueces">
+          <End Role="tbl_users_jueces" Type="Self.tbl_users_jueces" Multiplicity="0..1" />
+          <End Role="tbl_presentacion_uno" Type="Self.tbl_presentacion_uno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_users_jueces">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbl_presentacion_uno">
+              <PropertyRef Name="fk_users_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DatosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_candidatas" EntityType="Self.tbl_candidatas" />
+          <EntitySet Name="tbl_presentacion_cuatro" EntityType="Self.tbl_presentacion_cuatro" />
+          <EntitySet Name="tbl_presentacion_dos" EntityType="Self.tbl_presentacion_dos" />
+          <EntitySet Name="tbl_presentacion_tres" EntityType="Self.tbl_presentacion_tres" />
+          <EntitySet Name="tbl_presentacion_uno" EntityType="Self.tbl_presentacion_uno" />
+          <EntitySet Name="tbl_users_jueces" EntityType="Self.tbl_users_jueces" />
+          <AssociationSet Name="FK_tbl_presentacion_cuatro_tbl_candidatas" Association="Self.FK_tbl_presentacion_cuatro_tbl_candidatas">
+            <End Role="tbl_candidatas" EntitySet="tbl_candidatas" />
+            <End Role="tbl_presentacion_cuatro" EntitySet="tbl_presentacion_cuatro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_presentacion_dos_tbl_candidatas" Association="Self.FK_tbl_presentacion_dos_tbl_candidatas">
+            <End Role="tbl_candidatas" EntitySet="tbl_candidatas" />
+            <End Role="tbl_presentacion_dos" EntitySet="tbl_presentacion_dos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_presentacion_tres_tbl_candidatas" Association="Self.FK_tbl_presentacion_tres_tbl_candidatas">
+            <End Role="tbl_candidatas" EntitySet="tbl_candidatas" />
+            <End Role="tbl_presentacion_tres" EntitySet="tbl_presentacion_tres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_presentacion_uno_tbl_candidatas" Association="Self.FK_tbl_presentacion_uno_tbl_candidatas">
+            <End Role="tbl_candidatas" EntitySet="tbl_candidatas" />
+            <End Role="tbl_presentacion_uno" EntitySet="tbl_presentacion_uno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_presentacion_cuatro_tbl_users_jueces" Association="Self.FK_tbl_presentacion_cuatro_tbl_users_jueces">
+            <End Role="tbl_users_jueces" EntitySet="tbl_users_jueces" />
+            <End Role="tbl_presentacion_cuatro" EntitySet="tbl_presentacion_cuatro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_presentacion_dos_tbl_users_jueces" Association="Self.FK_tbl_presentacion_dos_tbl_users_jueces">
+            <End Role="tbl_users_jueces" EntitySet="tbl_users_jueces" />
+            <End Role="tbl_presentacion_dos" EntitySet="tbl_presentacion_dos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_presentacion_tres_tbl_users_jueces" Association="Self.FK_tbl_presentacion_tres_tbl_users_jueces">
+            <End Role="tbl_users_jueces" EntitySet="tbl_users_jueces" />
+            <End Role="tbl_presentacion_tres" EntitySet="tbl_presentacion_tres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_presentacion_uno_tbl_users_jueces" Association="Self.FK_tbl_presentacion_uno_tbl_users_jueces">
+            <End Role="tbl_users_jueces" EntitySet="tbl_users_jueces" />
+            <End Role="tbl_presentacion_uno" EntitySet="tbl_presentacion_uno" />
+          </AssociationSet>
+          <FunctionImport Name="PromediarNotas" ReturnType="Collection(Byte)">
+          <Parameter Name="usuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ChamboModelStoreContainer" CdmEntityContainer="DatosEntities">
+          <EntitySetMapping Name="tbl_candidatas">
+            <EntityTypeMapping TypeName="ChamboModel.tbl_candidatas">
+              <MappingFragment StoreEntitySet="tbl_candidatas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="respresentacion" ColumnName="respresentacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_presentacion_cuatro">
+            <EntityTypeMapping TypeName="ChamboModel.tbl_presentacion_cuatro">
+              <MappingFragment StoreEntitySet="tbl_presentacion_cuatro">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fk_candidatas_id" ColumnName="fk_candidatas_id" />
+                <ScalarProperty Name="fk_users_id" ColumnName="fk_users_id" />
+                <ScalarProperty Name="nota1" ColumnName="nota1" />
+                <ScalarProperty Name="nota2" ColumnName="nota2" />
+                <ScalarProperty Name="nota3" ColumnName="nota3" />
+                <ScalarProperty Name="nota4" ColumnName="nota4" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_presentacion_dos">
+            <EntityTypeMapping TypeName="ChamboModel.tbl_presentacion_dos">
+              <MappingFragment StoreEntitySet="tbl_presentacion_dos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fk_candidatas_id" ColumnName="fk_candidatas_id" />
+                <ScalarProperty Name="fk_users_id" ColumnName="fk_users_id" />
+                <ScalarProperty Name="nota1" ColumnName="nota1" />
+                <ScalarProperty Name="nota2" ColumnName="nota2" />
+                <ScalarProperty Name="nota3" ColumnName="nota3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_presentacion_tres">
+            <EntityTypeMapping TypeName="ChamboModel.tbl_presentacion_tres">
+              <MappingFragment StoreEntitySet="tbl_presentacion_tres">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fk_candidatas_id" ColumnName="fk_candidatas_id" />
+                <ScalarProperty Name="fk_users_id" ColumnName="fk_users_id" />
+                <ScalarProperty Name="nota1" ColumnName="nota1" />
+                <ScalarProperty Name="nota2" ColumnName="nota2" />
+                <ScalarProperty Name="nota3" ColumnName="nota3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_presentacion_uno">
+            <EntityTypeMapping TypeName="ChamboModel.tbl_presentacion_uno">
+              <MappingFragment StoreEntitySet="tbl_presentacion_uno">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="fk_candidatas_id" ColumnName="fk_candidatas_id" />
+                <ScalarProperty Name="fk_users_id" ColumnName="fk_users_id" />
+                <ScalarProperty Name="nota1" ColumnName="nota1" />
+                <ScalarProperty Name="nota2" ColumnName="nota2" />
+                <ScalarProperty Name="nota3" ColumnName="nota3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_users_jueces">
+            <EntityTypeMapping TypeName="ChamboModel.tbl_users_jueces">
+              <MappingFragment StoreEntitySet="tbl_users_jueces">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombres_completos" ColumnName="nombres_completos" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PromediarNotas" FunctionName="ChamboModel.Store.PromediarNotas" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

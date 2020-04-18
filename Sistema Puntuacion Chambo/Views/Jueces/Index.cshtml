@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Sistema_Puntuacion_Chambo.Models.DatosBD.tbl_users_jueces>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<table class="table table-striped">
+    <tr class="success">
+        <th >
+            <h3>Listado de Jueces Registrados</h3>
+        </th>
+        <th></th>
+        <th></th>
+        <th style="padding-top:25px">
+            @Html.ActionLink("Agregar Usuario", "Create", null, new { @class = "btn btn-success" })
+        </th>
+    </tr>
+</table>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombres_completos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombres_completos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tipo)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.id }) |
+                @Html.ActionLink("Eleminar", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>

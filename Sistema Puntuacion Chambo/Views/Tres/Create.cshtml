@@ -1,0 +1,106 @@
+﻿@model Sistema_Puntuacion_Chambo.Models.DatosBD.tbl_presentacion_cuatro
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<link href="~/Content/presentaciones.css" rel="stylesheet" type="text/css" />
+
+<h2>Tercera Presentacion En Traje De Gala</h2>
+@using (Html.BeginForm("Create", "Tres", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="formborde">
+
+        <table class="table table-striped">
+            <tr>
+                <th>
+
+                </th>
+                <th>
+                    Candidatas
+                </th>
+                <th>
+
+                </th>
+                <th class="tdNotas">
+                    Belleza Fisica
+                </th>
+
+                <th class="tdNotas">
+                    Elegancia
+                </th>
+                <th class="tdNotas">
+                    Dominio del Escenario
+                </th>
+                <th class="tdNotas">
+                    Vestuario
+                </th>
+
+            </tr>
+            <tr>
+                <th>
+                    Nombres
+                </th>
+                <th>
+                    Representacion
+                </th>
+                <th>
+                    Foto
+                </th>
+                <th class="tdNotas">
+                    Sobre 4
+                </th>
+
+                <th class="tdNotas">
+                    Sobre 2
+                </th>
+                <th class="tdNotas">
+                    Sobre 2
+                </th>
+                <th class="tdNotas">
+                    Sobre 2
+                </th>
+
+            </tr>
+
+            @foreach (var item in ViewBag.CandidatasList)
+            {
+        <tr>
+            <th class="tdCenter">
+                <h4>
+                    @item.nombres @item.apellidos
+                </h4>
+            </th>
+            <th class="tdCenter">
+                <h4>
+                    @item.respresentacion
+                </h4>
+            </th>
+            <th>
+                <input name="imagen_id" value="@item.id" hidden />
+                <img class="img-rounded" src="data:image/jpg;base64,
+                     @System.Convert.ToBase64String(item.imagen)" height="83" width="65" />
+            </th>
+            <th class="tdNotas">
+                <input type="number" name="notaUno" required min="0" max="4" />
+            </th>
+            <th class="tdNotas">
+                <input class="input-validation-error"  type="number" name="notaDos" required min="0" max="2" />
+            </th>
+            <th class="tdNotas">
+                <input class="input-validation-error"  type="number" name="notaTres" required min="0" max="2" />
+            </th>
+            <th class="tdNotas">
+                <input class="input-validation-error"  type="number" name="notaCuatro" required min="0" max="2" />
+            </th>
+        </tr>
+            }
+
+        </table>
+
+        <div class="botonGuardar">
+            <input type="submit" value="Guardar Datos" class="btn btn-success btn-block " />
+        </div>
+    </div>
+}

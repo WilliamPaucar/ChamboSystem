@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Sistema_Puntuacion_Chambo.Models.DatosBD.tbl_candidatas>
+
+@{
+    ViewBag.Title = "Gestion Participantes";
+}
+
+<style type="text/css">
+
+    th {
+        width: 18%;
+    }
+</style>
+
+
+
+<div>
+    <table class="table table-striped">
+        <tr class="success">
+            <th>
+                <h3>Gestion De Participantes</h3>
+            </th>
+            <th></th>
+            <th style="padding-top:25px">
+                @Html.ActionLink("Resultados Finales", "Index", "Final", null, new { @class = "btn btn-default" })
+            </th>
+            <th style="padding-top:25px">
+                @Html.ActionLink("Agregar Participante", "Create", null, new { @class = "btn btn-default" })
+            </th>
+        </tr>
+    </table>
+
+</div>
+
+
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apellidos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.imagen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.respresentacion)
+        </th>
+        <th>Accion</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombres)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.apellidos)
+            </td>
+            <td>
+
+                <img class="img-rounded" alt="@item.id" src="data:image/jpg;base64,
+                     @System.Convert.ToBase64String(item.imagen)" height="95" width="70" />
+
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.respresentacion)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.id }, new { @class = "btn btn-primary btn-sm" }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.id }, new { @class = "btn btn-primary btn-sm" }) |
+                @Html.ActionLink("ELiminar", "Delete", new { id = item.id }, new { @class = "btn btn-danger btn-sm" })
+            </td>
+
+        </tr>
+
+    }
+
+</table>
+<table class="table table-striped">
+<tr style="background:#e5f0e1">
+    <td style="text-align:right; padding-top:15px;">  ADMINISTRAR</td>
+    <td>
+        @Html.ActionLink("Jueces", "Index", "Jueces", null, new { @class = "btn btn-success btn-block" })
+    </td>
+    <td>
+        @Html.ActionLink("Presentacion 1", "Index", "Uno", null, new { @class = "btn btn-success btn-block" })
+    </td>
+    <td>
+        @Html.ActionLink("Presentacion 2", "Index", "Dos", null, new { @class = "btn btn-success btn-block" })
+    </td>
+    <td>
+        @Html.ActionLink("Presentacion 3", "Index", "Tres", null, new { @class = "btn btn-success btn-block" })
+    </td>
+    <td>
+        @Html.ActionLink("Presentacion 4", "Index", "Cuatro", null, new { @class = "btn btn-success btn-block" })
+    </td>
+</tr>
+</table>
+
+@*ZooM De Imagen*@
+
+

@@ -1,0 +1,57 @@
+﻿@model Sistema_Puntuacion_Chambo.Models.DatosBD.tbl_users_jueces
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eiliminar</h2>
+
+           
+<h3>Eliminar a @Html.DisplayFor(model => model.id) ?</h3>
+<div>
+ 
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombres_completos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombres_completos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Atras", "Index")
+        </div>
+    }
+</div>

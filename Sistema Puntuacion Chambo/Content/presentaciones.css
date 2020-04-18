@@ -1,0 +1,41 @@
+﻿input[type=number] {
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    font-size: 24px;
+}
+
+h4 {
+    font-family: 'Cambria Math';
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+h2 {
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    text-align: center;
+    background: #ddf4d4;
+    padding-top: 16px;
+    border-radius: 5px;
+}
+
+.tdCenter {
+    width: 27%;
+}
+
+.tdNotas {
+    background: rgba(19, 64, 131, 0.15);
+    text-align: center;
+}
+
+
+.formborde {
+    border: 5px solid #f4f1f1;
+    border-radius: 4px;
+}
+
+.botonGuardar {
+    padding-left: 38%;
+    background: #ddf4d4;
+    border-radius: 5px;
+}

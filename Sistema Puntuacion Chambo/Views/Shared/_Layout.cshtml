@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.6, shrink-to-fit=no">
+    <title>@ViewBag.Title - Chambo</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <style type="text/css">
+
+        body {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgb(104, 205, 162), rgb(12, 97, 33));
+}
+    </style>
+
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top ">
+        <div style=" position:absolute; margin-left:75%;color:white; margin-top:15px">
+            @if (Session["username"] != null)
+            {
+                <h5>Hola, @Session["username"].ToString()</h5>}
+        </div>
+
+        <div class="container " style="border-radius:5px">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-next"></span>
+
+                </button>
+                <h4 style="margin-right:15px;font-weight: bold; color:#ffff;padding-top:15px">
+                   SISTEMA DE PUNTUACION REINA DE CHAMBO
+                </h4>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (Session["username"] != null && Session["id"]==null)
+                    {                                          
+                    <li class="nav-item" style="padding-top:7px">
+                        @Html.ActionLink("Administrar Sistema", "Index", "tbl_candidatas", new { area = "" }, new { @class = "navbar-brand" })
+                    </li>
+                    }
+                    <li class="nav-item">
+
+                        <div style=" margin-left:10px;text-align:right;padding-top:15px">
+                            @if (Session["username"] != null)
+                            {
+                                <h5>@Html.ActionLink("Cerrar Sesion", "log", "Uno")</h5>}
+                        </div>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer class="nav">
+            <p>&copy; @DateTime.Now.Year - Applicacion Hecha en ASP.NET By William P.</p>
+
+            <div>
+                <img class="img-responsive" src="~/img/unach.jpg" />
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

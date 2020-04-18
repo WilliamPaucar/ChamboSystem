@@ -1,0 +1,62 @@
+﻿@model Sistema_Puntuacion_Chambo.Models.DatosBD.tbl_candidatas
+
+@{
+    ViewBag.Title = "Details";
+}
+
+    
+<h2>Detalles de participante</h2>
+
+<div class="form-horizontal">
+ 
+    <hr />
+    <dl class="dl-horizontal" style="padding-left:100px">
+        <dt></dt>
+        <dd style=" margin-left:221px; padding-bottom:25px">   <h4>Participante @Html.DisplayFor(model => model.id)</h4></dd>
+       
+        <dt class="col-md-1">  @Html.DisplayNameFor(model => model.imagen)<br /></dt>
+
+        <dd >
+          
+            <img style="border-radius:5px;border:2px solid #e4e0e0; margin-bottom:20px "
+                 src="data:image;base64,@System.Convert.ToBase64String(Model.imagen)"height="200" width="165" />
+
+        </dd>
+
+        <dt class="col-md-12">
+            @Html.DisplayNameFor(model => model.nombres)
+        </dt>
+
+        <dd style="padding-bottom:10px">
+            @Html.DisplayFor(model => model.nombres)
+        </dd>
+
+        <dt class="col-md-2">
+            @Html.DisplayNameFor(model => model.apellidos)
+        </dt>
+
+        <dd style="padding-bottom:10px">
+            @Html.DisplayFor(model => model.apellidos)
+
+        </dd>
+
+        <dt class="col-md-1">
+            @Html.DisplayNameFor(model => model.respresentacion)
+        </dt>
+
+        <dd style="padding-bottom:10px">
+            @Html.DisplayFor(model => model.respresentacion)
+        </dd>
+
+    </dl>
+</div>
+<p >
+    @Html.ActionLink("Editar Datos", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Atras", "Index")
+</p>
+@*<div class="card" style="width: 18rem;">
+    <img class="card-img-top"  style="border-radius:5px;border:2px solid #e4e0e0; "src="data:image;base64,@System.Convert.ToBase64String(Model.imagen)" height="150" width="175">
+    <div class="card-body">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>*@

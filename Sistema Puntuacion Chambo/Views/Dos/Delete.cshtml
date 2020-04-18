@@ -1,0 +1,63 @@
+﻿@model Sistema_Puntuacion_Chambo.Models.DatosBD.tbl_presentacion_dos
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+    <h2>Eliminar</h2>
+
+    <h3>Eliminar Este Registro?</h3>
+<div>
+     <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nota1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nota1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nota2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nota2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nota3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nota3)
+        </dd>
+
+        <dt>
+            Candidata
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_candidatas.nombres)
+        </dd>
+
+        <dt>
+            Juez
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_users_jueces.nombres_completos)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Atras", "Index")
+        </div>
+    }
+</div>

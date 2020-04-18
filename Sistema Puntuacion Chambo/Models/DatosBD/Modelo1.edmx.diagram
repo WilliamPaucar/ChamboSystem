@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="72a9675f1dbb49d984424fd773f73b5d" Name="Diagram1">
+        <EntityTypeShape EntityType="ChamboModel.tbl_candidatas" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChamboModel.tbl_presentacion_cuatro" Width="1.5" PointX="1.375" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChamboModel.tbl_presentacion_dos" Width="1.5" PointX="5.375" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChamboModel.tbl_presentacion_tres" Width="1.5" PointX="3.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChamboModel.tbl_presentacion_uno" Width="1.5" PointX="8.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChamboModel.tbl_users_jueces" Width="1.5" PointX="8.875" PointY="2.625" IsExpanded="true" />
+        <AssociationConnector Association="ChamboModel.FK_tbl_presentacion_cuatro_tbl_candidatas" ManuallyRouted="false" />
+        <AssociationConnector Association="ChamboModel.FK_tbl_presentacion_dos_tbl_candidatas" ManuallyRouted="false" />
+        <AssociationConnector Association="ChamboModel.FK_tbl_presentacion_tres_tbl_candidatas" ManuallyRouted="false" />
+        <AssociationConnector Association="ChamboModel.FK_tbl_presentacion_uno_tbl_candidatas" ManuallyRouted="false" />
+        <AssociationConnector Association="ChamboModel.FK_tbl_presentacion_cuatro_tbl_users_jueces" ManuallyRouted="false" />
+        <AssociationConnector Association="ChamboModel.FK_tbl_presentacion_dos_tbl_users_jueces" ManuallyRouted="false" />
+        <AssociationConnector Association="ChamboModel.FK_tbl_presentacion_tres_tbl_users_jueces" ManuallyRouted="false" />
+        <AssociationConnector Association="ChamboModel.FK_tbl_presentacion_uno_tbl_users_jueces" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

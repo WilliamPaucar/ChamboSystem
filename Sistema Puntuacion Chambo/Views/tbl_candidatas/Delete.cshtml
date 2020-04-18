@@ -1,0 +1,62 @@
+﻿@model Sistema_Puntuacion_Chambo.Models.DatosBD.tbl_candidatas
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+
+<h3>seguro que deseas elmininar?</h3>
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal" style="padding-left:100px">
+        <dt></dt>
+        <dd style=" margin-left:221px; padding-bottom:25px">Candidata @Html.DisplayFor(model => model.id)</dd>
+
+        <dt class="col-md-1">  @Html.DisplayNameFor(model => model.imagen)<br /></dt>
+
+        <dd>
+
+            <img style="border-radius:5px;border:2px solid #e4e0e0; margin-bottom:20px "
+                 src="data:image;base64,@System.Convert.ToBase64String(Model.imagen)" height="200" width="165" />
+
+        </dd>
+
+        <dt class="col-md-12">
+            @Html.DisplayNameFor(model => model.nombres)
+        </dt>
+
+        <dd style="padding-bottom:10px">
+            @Html.DisplayFor(model => model.nombres)
+        </dd>
+
+        <dt class="col-md-2">
+            @Html.DisplayNameFor(model => model.apellidos)
+        </dt>
+
+        <dd style="padding-bottom:10px">
+            @Html.DisplayFor(model => model.apellidos)
+
+        </dd>
+
+        <dt class="col-md-1">
+            @Html.DisplayNameFor(model => model.respresentacion)
+        </dt>
+
+        <dd style="padding-bottom:10px">
+            @Html.DisplayFor(model => model.respresentacion)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Atras", "Index")
+        </div>
+    }
+</div>

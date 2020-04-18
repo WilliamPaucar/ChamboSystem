@@ -1,0 +1,58 @@
+﻿@model Sistema_Puntuacion_Chambo.Models.DatosBD.tbl_presentacion_uno
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Participante</h2>
+
+<div>
+    <h4>Detalles De Registro</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nota1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nota1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nota2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nota2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nota3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nota3)
+        </dd>
+
+        <dt>
+            Candidata
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_candidatas.nombres)
+        </dd>
+
+        <dt>
+            Juez
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_users_jueces.nombres_completos)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Atras", "Index")
+</p>

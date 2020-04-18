@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Error";
+}
+<style type="text/css">
+    .error-template {
+        padding: 40px 15px;
+        text-align: center;
+    }
+
+    .error-actions {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+        .error-actions .btn {
+            margin-right: 10px;
+        }
+</style>
+
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="error-template">
+                <h1>
+                    Oops!
+                </h1>
+                <h2>
+                    404 Solicitud Negada
+                </h2>
+                <div class="error-details">
+                    Sorry, Un error a Ocurrido,Usuario @Session["username"].ToString() No tiene permiso!
+                </div>
+                <div class="error-actions">
+                    @if (ViewBag.Home == null)
+                    {<a href="~/tbl_candidatas/Index" class="btn btn-primary btn-lg">
+                            <span class="glyphicon glyphicon-home"></span>
+                            Home
+                        </a>}
+                    else {
+                <a href="~/Uno/Create" class="btn btn-primary btn-lg">
+                    <span class="glyphicon glyphicon-home"></span>
+                    Home
+                </a>
+                            }
+                    
+                    <a href="~/Uno/log" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span>Cambiar Usuario</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
