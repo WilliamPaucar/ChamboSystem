@@ -7,10 +7,12 @@
 </h1>
 @{
     int aux = 0, sum = 0;
-
 }
 <div class="formborde">
-
+    <a>
+        <span class="glyphicon glyphicon-list"></span>
+        @Html.ActionLink("Reporte", "Informe", "Final", Session["username"] = Session["username"]);
+    </a>
     <table class="table table-bordered">
 
         <tr>
@@ -79,7 +81,7 @@
 </div>
 
 <div>
- 
+
     <table class="table-bordered">
 
         <tr>
@@ -95,13 +97,13 @@
                 </th>
             }
         </tr>
-        </table>
-        <table class="table table-responsive">
-        <tr >
-            <th >
+    </table>
+    <table class="table table-responsive">
+        <tr>
+            <th>
 
 
-            </th >
+            </th>
             @if (ViewBag.Notario != null)
             {
                 foreach (var item in ViewBag.Notario)
@@ -111,16 +113,16 @@
                         <h3 style="padding-left:8px">
                             __________________
                         </h3>
-                        <h5 ><b>Notario: </b> @item.nombres_completos</h5>
+                        <h5><b>Notario: </b> @item.nombres_completos</h5>
                     </td>
                 }
             }
-            <th >
+            <th>
 
 
             </th>
 
         </tr>
     </table>
-            
+
 </div>

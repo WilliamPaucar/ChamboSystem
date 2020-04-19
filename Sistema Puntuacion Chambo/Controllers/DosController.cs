@@ -83,7 +83,7 @@ namespace Sistema_Puntuacion_Chambo.Controllers
 
 
                 }
-                return RedirectToAction("Index", "Dos");
+                return RedirectToAction("Create", "Tres");
             }
             else
             {
