@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using Sistema_Puntuacion_Chambo.Models.DatosBD;
 using NReco.PdfGenerator;
+using Rotativa;
+
 namespace Sistema_Puntuacion_Chambo.Controllers
 {
     public class FinalController : Controller
@@ -69,11 +71,13 @@ namespace Sistema_Puntuacion_Chambo.Controllers
             }
             else
                 return View();
-        
-
-
     }
-}
+        public ActionResult Print()
+        {
+            return new ActionAsPdf("Index") { FileName = "ResultadoFinal.pdf" };
+
+        }
+    }
     
 }
 
