@@ -246,6 +246,7 @@
     <Content Include="Views\Cuatro\Edit.cshtml" />
     <Content Include="Views\Cuatro\Index.cshtml" />
     <Content Include="Views\Final\Index.cshtml" />
+    <Content Include="Views\Final\Informe.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewBag.Title = "Informe";
+}
+
+<h2>Informe Final de Resultados</h2>
+@{
+    int aux = 0, sum = 0;
+}
+<div class="formborde">
+
+    <table class="table table-bordered">
+
+        <tr>
+            <th>
+                Nombres
+            </th>
+            <th>
+                Foto
+            </th>
+            @foreach (var item in ViewBag.JuecesList)
+            {
+                <th class="tdNotas">
+                    @item.nombres_completos
+                </th>
+            }
+            <th>
+                Total
+            </th>
+        </tr>
+
+        @foreach (var item in ViewBag.CandidatasList)
+        {
+
+            <tr>
+                <th class="tdCenter">
+                    <h4>
+                        @item.nombres @item.apellidos
+                    </h4>
+                </th>
+                <th>
+                    <input name="imagen_id" value="@item.id" hidden />
+                    <img class="img-rounded" src="data:image/jpg;base64,
+                     @System.Convert.ToBase64String(item.imagen)" height="63" width="50" />
+                </th>
+
+                @for (int m = aux; m < ViewBag.participantes.Count; m++)
+                {
+                    if (m < aux + Model)
+                    {
+
+                        <th class="text-center">
+                            @ViewBag.participantes[m]
+                        </th>
+
+                        sum += @ViewBag.participantes[m];
+                    }
+                    else
+                    {
+                        <th class="text-center">
+
+                            @sum
+                        </th>
+                        aux = aux + Model;
+                        sum = 0;
+                        break;
+                    }
+
+
+
+                }
+
+            </tr>
+
+        }
+    </table>
+</div>
+
+<div>
+
+    <table class="table-bordered">
+
+        <tr>
+            @foreach (var item in ViewBag.JuecesList)
+            {
+
+                <th>
+
+                    <h4 class="tdNotas" style="padding-left:8px;padding-right:8px">
+                        __________________
+                    </h4>
+                    <h6 class="text-center"><b>Juez: </b>@item.nombres_completos</h6>
+                </th>
+            }
+        </tr>
+    </table>
+    <table class="table table-responsive">
+        <tr>
+            <th>
+
+
+            </th>
+            @if (ViewBag.Notario != null)
+            {
+                foreach (var item in ViewBag.Notario)
+                {
+                    <td class="text-center">
+
+                        <h3 style="padding-left:8px">
+                            __________________
+                        </h3>
+                        <h5><b>Notario: </b> @item.nombres_completos</h5>
+                    </td>
+                }
+            }
+            <th>
+
+
+            </th>
+
+        </tr>
+    </table>
+
+</div>
