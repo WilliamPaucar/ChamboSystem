@@ -87,7 +87,7 @@ namespace Sistema_Puntuacion_Chambo.Controllers
 
 
                 }
-                return RedirectToAction("Final", "Final");
+                return RedirectToAction("Index","Final");
             }
             else
             {
